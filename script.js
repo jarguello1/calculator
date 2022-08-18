@@ -159,8 +159,8 @@ function operate() {
     }
     // If one of the numbers has a decimal change values to floats
     if ((displayValue.includes(".") || previousValue.includes("."))) {
-        num1 = parseFloat(displayValue).toFixed(2);
-        num2 = parseFloat(previousValue).toFixed(2);
+        num1 = parseFloat(displayValue);
+        num2 = parseFloat(previousValue);
     } else { // else change them to ints
         num1 = parseInt(displayValue);
         num2 = parseInt(previousValue);
