@@ -1,10 +1,15 @@
 let displayValue = "";
+let currentOperator = "";
+let previousValue = "";
+let combinedValue = "";
 
 const display = document.querySelector('#display');
 display.textContent = displayValue;
 
 function clearDisplay()  {
     displayValue = "";
+    currentOperator = "";
+    previousValue = "";
     display.textContent = displayValue;
 }
 
@@ -28,3 +33,22 @@ numberText.forEach(function(e) {
     const numberBtn = document.getElementById(e);
     numberBtn.addEventListener('click', numberButton);
 });
+
+const add = document.getElementById('add');
+add.addEventListener('click', addition);
+
+function addition() {
+    if (displayValue !== "") {
+        previousValue = displayValue;
+        displayValue = "";
+        currentOperator = "+"
+    } else {
+        return;
+    }
+
+}
+
+function operate() {
+    combinedValue = displayValue+currentOperator+previousValue;
+    display.textContent = combinedValue;
+}
