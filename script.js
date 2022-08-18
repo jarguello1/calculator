@@ -58,6 +58,7 @@ numberText.forEach(function(e) {
     numberBtn.addEventListener('click', numberButton);
 });
 
+// number rounds down before operation probably entering as an int
 function decimalPoint(e) {
     if (displayValue.includes(".")) {
         return;
@@ -146,8 +147,13 @@ function operate() {
     if (displayValue === "") {
         displayValue = "0";
     }
-    num1 = parseInt(displayValue);
-    num2 = parseInt(previousValue);
+    if ((displayValue.includes(".") || previousValue.includes("."))) {
+        num1 = parseFloat(displayValue).toFixed(2);
+        num2 = parseFloat(previousValue).toFixed(2);
+    } else {
+        num1 = parseInt(displayValue);
+        num2 = parseInt(previousValue);
+    }
     solution = 0;
     if (currentOperator==="+") {
         solution = (num1 + num2);
