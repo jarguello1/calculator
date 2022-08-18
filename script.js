@@ -36,8 +36,11 @@ numberText.forEach(function(e) {
 
 
 function addition() {
-    if (displayValue !== "+") {
+    if (currentOperator !== "+" && previousValue === "") {
         previousValue = displayValue;
+        displayValue = "";
+        currentOperator = "+"
+    } else if  (currentOperator !== "+" && previousValue !== ""){
         displayValue = "";
         currentOperator = "+"
     } else {
@@ -46,8 +49,11 @@ function addition() {
 }
 
 function subtraction () {
-    if (displayValue !== "-") {
+    if (currentOperator !== "-" && previousValue === "") {
         previousValue = displayValue;
+        displayValue = "";
+        currentOperator = "-"
+    } else if  (currentOperator !== "-" && previousValue !== ""){
         displayValue = "";
         currentOperator = "-"
     } else {
@@ -56,8 +62,11 @@ function subtraction () {
 }
 
 function multiplication () {
-    if (displayValue !== "*") {
+    if (currentOperator !== "*" && previousValue === "") {
         previousValue = displayValue;
+        displayValue = "";
+        currentOperator = "*"
+    } else if  (currentOperator !== "*" && previousValue !== ""){
         displayValue = "";
         currentOperator = "*"
     } else {
@@ -66,8 +75,11 @@ function multiplication () {
 }
 
 function division () {
-    if (displayValue !== "/") {
+    if (currentOperator !== "/" && previousValue === "") {
         previousValue = displayValue;
+        displayValue = "";
+        currentOperator = "/"
+    } else if  (currentOperator !== "/" && previousValue !== ""){
         displayValue = "";
         currentOperator = "/"
     } else {
@@ -97,20 +109,20 @@ function operate() {
     num2 = parseInt(previousValue);
     solution = 0;
     if (currentOperator==="+") {
-        currentOperator = "";
-        solution = (num1 + num2)
+        solution = (num1 + num2);
+        displayValue = solution;
         display.textContent = solution;
     } else if (currentOperator==="-") {
-        currentOperator = "";
-        solution = (num2 - num1)
+        solution = (num2 - num1);
+        previousValue = solution;
         display.textContent = solution;
     } else if (currentOperator==="*") {
-        currentOperator = "";
         solution = (num1 * num2)
+        displayValue = solution;
         display.textContent = solution;
     } else if (currentOperator==="/") {
-        currentOperator = "";
-        solution = (num2 / num1)
+        solution = (num2 / num1);
+        previousValue = solution;
         display.textContent = solution;
     }
 }
