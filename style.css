@@ -5,6 +5,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, system-ui;
 
 }
 
@@ -20,8 +21,13 @@ body {
 
 #display {
     background-color: rgb(211, 218, 207);
+    display: flex;
+    align-items: center;
+    justify-content: end;
     width: 380px;
     height: 71px;
+    color: black;
+    font-size: 48px;
 }
 
 .row {
@@ -35,8 +41,22 @@ button {
     height: 71px;
     width: 90px;
     border-radius: 3px;
+    color: black;
+    font-size: 32px;
 }
 
 button#zero {
     width: 185px;
+}
+
+button.number {
+    background-color: rgb(172, 172, 172);
+}
+
+button.operator {
+    background-color: rgb(216, 158, 83);
+}
+
+button.func {
+    background-color: white;
 }
