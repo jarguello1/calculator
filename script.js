@@ -58,6 +58,20 @@ numberText.forEach(function(e) {
     numberBtn.addEventListener('click', numberButton);
 });
 
+function decimalPoint(e) {
+    if (displayValue.includes(".")) {
+        return;
+    } else if (!(displayValue.includes(".")) && displayValue === "") {
+        return;
+    } else if (!(displayValue.includes("."))) {
+        let point = e.target.textContent;
+        displayValue += point;
+        display.textContent = displayValue;
+    }
+}
+
+const decimal = document.getElementById("decimal");
+decimal.addEventListener('click', decimalPoint);
 
 function addition() {
     if (currentOperator !== "+" && previousValue === "") {
