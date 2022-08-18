@@ -13,6 +13,33 @@ function clearDisplay()  {
     display.textContent = displayValue;
 }
 
+
+const clear = document.getElementById('clear');
+clear.addEventListener('click', clearDisplay);
+
+function positiveOrNegative() {
+    if (displayValue.charAt(0) !== "-") {
+        displayValue = "-" + displayValue;
+    } else if (displayValue.charAt(0) === "-") {
+        displayValue = displayValue.substring(1);
+    }
+    display.textContent = displayValue;
+}
+
+const sign = document.getElementById('sign');
+sign.addEventListener('click', positiveOrNegative);
+
+
+function makePercent() {
+    number = parseInt(displayValue);
+    number /= 100;
+    displayValue = number.toString();
+    display.textContent = displayValue;
+}
+
+const percent = document.getElementById('percent');
+percent.addEventListener('click', makePercent);
+
 function numberButton(e) {
     let number = e.target.textContent;
     if (displayValue === "0") {
@@ -24,9 +51,6 @@ function numberButton(e) {
         display.textContent = displayValue;
     }
 }
-
-const clear = document.getElementById('clear');
-clear.addEventListener('click', clearDisplay);
 
 let numberText = ['zero','one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 numberText.forEach(function(e) {
@@ -105,6 +129,9 @@ const equals = document.getElementById('equal');
 equals.addEventListener('click', operate);
 
 function operate() {
+    if (displayValue === "") {
+        displayValue = "0";
+    }
     num1 = parseInt(displayValue);
     num2 = parseInt(previousValue);
     solution = 0;
