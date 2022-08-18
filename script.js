@@ -34,21 +34,83 @@ numberText.forEach(function(e) {
     numberBtn.addEventListener('click', numberButton);
 });
 
-const add = document.getElementById('add');
-add.addEventListener('click', addition);
 
 function addition() {
-    if (displayValue !== "") {
+    if (displayValue !== "+") {
         previousValue = displayValue;
         displayValue = "";
         currentOperator = "+"
     } else {
         return;
     }
-
 }
 
+function subtraction () {
+    if (displayValue !== "-") {
+        previousValue = displayValue;
+        displayValue = "";
+        currentOperator = "-"
+    } else {
+        return;
+    }
+}
+
+function multiplication () {
+    if (displayValue !== "*") {
+        previousValue = displayValue;
+        displayValue = "";
+        currentOperator = "*"
+    } else {
+        return;
+    }
+}
+
+function division () {
+    if (displayValue !== "/") {
+        previousValue = displayValue;
+        displayValue = "";
+        currentOperator = "/"
+    } else {
+        return;
+    }
+}
+
+
+const add = document.getElementById('add');
+add.addEventListener('click', addition);
+
+const subtract = document.getElementById('subtract');
+subtract.addEventListener('click', subtraction)
+
+const multiply = document.getElementById('multiply');
+multiply.addEventListener('click', multiplication);
+
+const divide = document.getElementById('divide');
+divide.addEventListener('click', division);
+
+
+const equals = document.getElementById('equal');
+equals.addEventListener('click', operate);
+
 function operate() {
-    combinedValue = displayValue+currentOperator+previousValue;
-    display.textContent = combinedValue;
+    num1 = parseInt(displayValue);
+    num2 = parseInt(previousValue);
+    solution = 0;
+    if (currentOperator==="+") {
+        currentOperator = "";
+        solution = (num1 + num2)
+        display.textContent = solution;
+    } else if (currentOperator==="-") {
+        currentOperator = "";
+        solution = (num2 - num1)
+        display.textContent = solution;
+    } else if (currentOperator==="*") {
+        currentOperator = "";
+        solution = (num1 * num2)
+        display.textContent = solution;
+    } else if (currentOperator==="/") {
+        currentOperator = "";
+        solution = (num2 / num1)
+        display.textContent = solution;
+    }
 }
